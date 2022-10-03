@@ -4,13 +4,14 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
-	rpchttp "github.com/tendermint/tendermint/rpc/client/http"
 	"io"
 	"net/http"
 	"net/url"
 	"regexp"
 	"time"
+
+	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
+	rpchttp "github.com/tendermint/tendermint/rpc/client/http"
 )
 
 // newRpc sets up the rpc client used for monitoring. It will try nodes in order until a working node is found.

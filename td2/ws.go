@@ -6,14 +6,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
-	"github.com/gorilla/websocket"
-	pbtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	"log"
 	"net/url"
 	"strconv"
 	"strings"
 	"time"
+
+	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
+	"github.com/gorilla/websocket"
+	pbtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 )
 
 const (

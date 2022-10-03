@@ -13,8 +13,9 @@ import (
 // altValopers is used to get a bech32 prefix for chains using non-standard naming
 var altValopers = &valoperOverrides{
 	Prefixes: map[string]string{
-		"ival": "ica", // Iris hub
-
+		"iva":    "ica",    // Iris hub
+		"tgrade": "tgrade", // Tgrade
+		"nomic":  "nomic",  // Nomic
 		// TODO: was told tgrade also has a custom prefix, but not sure what the pair is
 		// "tval": "tvalcons",
 	},
@@ -33,6 +34,8 @@ func (vo *valoperOverrides) getAltPrefix(oper string) (prefix string, ok bool) {
 	}
 	vo.RLock()
 	defer vo.RUnlock()
+	l("***", split)
+
 	return altValopers.Prefixes[split[0]], altValopers.Prefixes[split[0]] != ""
 }
 

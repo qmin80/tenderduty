@@ -3,12 +3,13 @@ package tenderduty
 import (
 	"encoding/json"
 	"fmt"
-	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
 )
 
 var td = &Config{}

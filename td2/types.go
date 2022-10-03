@@ -5,15 +5,16 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
-	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
-	"github.com/go-yaml/yaml"
-	rpchttp "github.com/tendermint/tendermint/rpc/client/http"
 	"io"
 	"net/url"
 	"os"
 	"regexp"
 	"sync"
 	"time"
+
+	dash "github.com/blockpane/tenderduty/v2/td2/dashboard"
+	"github.com/go-yaml/yaml"
+	rpchttp "github.com/tendermint/tendermint/rpc/client/http"
 )
 
 const (
