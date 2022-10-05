@@ -10,6 +10,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
 
 	slashing "github.com/cosmos/cosmos-sdk/x/slashing/types"
@@ -160,21 +161,19 @@ func getVal(ctx context.Context, client *rpchttp.HTTP, valoper string) (pub []by
 	}
 
 	var re = regexp.MustCompile(`band|odin`)
+	var pk = cryptotypes.PubKey{}
 
 	if re.MatchString(valoper) {
-		pk := secp256k1.PubKey{}
-		err = pk.Unmarshal(val.Validator.ConsensusPubkey.Value)
-		if err != nil {
-			return
-		}
-		return pk.Address().Bytes(), val.Validator.GetMoniker(), val.Validator.Jailed, val.Validator.Status == 3, nil
+		pk = secp256k1.PubKey{}
+
 	} else {
-		pk := ed25519.PubKey{}
-		err = pk.Unmarshal(val.Validator.ConsensusPubkey.Value)
-		if err != nil {
-			return
-		}
-		return pk.Address().Bytes(), val.Validator.GetMoniker(), val.Validator.Jailed, val.Validator.Status == 3, nil
+		pk = ed25519.PubKey{}
 	}
+
+	err = pk.Unmarshal(val.Validator.ConsensusPubkey.Value)
+	if err != nil {
+		return
+	}
+	return pk.Address().Bytes(), val.Validator.GetMoniker(), val.Validator.Jailed, val.Validator.Status == 3, nil
 
 }
